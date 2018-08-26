@@ -44,8 +44,10 @@ many climbers underneath them. This will be the people_coach table. User
 will b able to view, add, and delete.
 
 **ER DIAGRAM:**
+
 ![image](https://user-images.githubusercontent.com/13804972/44624368-54c1fb00-a8a1-11e8-9e23-6e2b75ee4534.png)
 
 **SCHEMA:**
+
 ![image](https://user-images.githubusercontent.com/13804972/44624369-5be90900-a8a1-11e8-80e8-e8e5cde0c74e.png)
 
