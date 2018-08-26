@@ -1,0 +1,48 @@
+{{#if error_message}}
+    <p>Something went wrong!</p>
+{{else}}
+    {{#if ranking}}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each ranking}}
+                    <tr>
+                        <td>{{ranking_rank}}</td>
+                        <td>{{ranking_location}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+{{/if}}
+
+    <h2>Add New Ranking</h2>
+        <form action='/add/ranking' method = "POST">
+            Rank Number:<br>
+            <input id = "ranking_rank" type="number" name= "ranking_rank"><br>
+            Region:<br>
+            <input id = "ranking_location" type="text" name="ranking_location"><br>
+
+            <input type="submit" value="Add">
+        </form>
+
+
+

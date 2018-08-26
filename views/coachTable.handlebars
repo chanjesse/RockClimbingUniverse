@@ -1,0 +1,49 @@
+{{#if error_message}}
+    <p>Something went wrong!</p>
+{{else}}
+    {{#if coaches}}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Years of Exp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each coaches}}
+                    <tr>
+                        <td>{{coach_fname}}</td>
+                        <td>{{coach_lname}}</td>
+                        <td>{{coach_yearsExp}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+{{/if}}
+    <h2>Add New Coach</h2>
+        <form action='/add/coach' method = "POST">
+            First Name:<br>
+            <input id = "coach_fname" type="text" name= "coach_fname"><br>
+            Last Name:<br>
+            <input id = "coach_lname" type="text" name="coach_lname"><br>
+            Years of Experience:<br>
+            <input id = "coach_yearsExp" type="text" name="coach_yearsExp"><br>
+
+            <input type="submit" value="Add">
+        </form>
+

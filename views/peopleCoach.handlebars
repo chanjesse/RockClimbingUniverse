@@ -1,0 +1,62 @@
+{{#if error_message}}
+    <p>Something went wrong!</p>
+{{else}}
+    {{#if peopleCoach}}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Climber First Name</th>
+                    <th>Climber Last Name</th>
+                    <th>Coach First Name</th>
+                    <th>Coach Last Name</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each peopleCoach}}
+                    <tr>
+                        <td>{{people_fname}}</td>
+                        <td>{{people_lname}}</td>
+                        <td>{{coach_fname}}</td>
+                        <td>{{coach_lname}}</td>
+                        <td><a href="/delete/peoplecoach/{{people_id}}/{{coach_id}}">Delete</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+{{/if}}
+
+<h2>Enter New Relation</h2>
+<form action="/add/peoplecoach/" method="POST">
+	<div class="form-group">
+		<label for="people">Person</label>
+		<select class="form-control" id="people" name="people">
+			{{#each people}}
+				<option value="{{people_id}}">{{people_fname}} {{people_lname}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="coach">Coach</label>
+		<select class="form-control" id="coach" name="coach">
+			{{#each coach}}
+				<option value="{{coach_id}}">{{coach_fname}} {{coach_lname}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<button type="submit" class="btn btn-default">Add Relation</button>
+</form>

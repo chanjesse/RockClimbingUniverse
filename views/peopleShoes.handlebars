@@ -1,0 +1,63 @@
+{{#if error_message}}
+    <p>Something went wrong!</p>
+{{else}}
+    {{#if peopleShoe}}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Shoe Brand</th>
+                    <th>Shoe Model</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each peopleShoe}}
+                    <tr>
+                        <td>{{people_fname}}</td>
+                        <td>{{people_lname}}</td>
+                        <td>{{shoes_brand}}</td>
+                        <td>{{shoes_model}}</td>
+                        <td><a href="/delete/peopleshoes/{{people_id}}/{{shoes_id}}">Delete</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+{{/if}}
+
+<h2>Enter New Relation</h2>
+<form action="/add/peopleshoes/" method="POST">
+	<div class="form-group">
+		<label for="people">Person</label>
+		<select class="form-control" id="people" name="people">
+			{{#each people}}
+				<option value="{{people_id}}">{{people_fname}} {{people_lname}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="shoe">Shoe</label>
+		<select class="form-control" id="shoe" name="shoe">
+			{{#each shoes}}
+				<option value="{{shoes_id}}">{{shoes_brand}} {{shoes_model}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<button type="submit" class="btn btn-default">Add Relation</button>
+</form>
+

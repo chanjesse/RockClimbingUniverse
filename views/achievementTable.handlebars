@@ -1,0 +1,46 @@
+{{#if error_message}}
+    <p>Something went wrong!</p>
+{{else}}
+    {{#if achievements}}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each achievements}}
+                    <tr>
+                        <td>{{achievement_year}}</td>
+                        <td>{{achievement_name}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+{{/if}}
+
+    <h2>Add New Achievement</h2>
+        <form action='/add/achievement' method = "POST">
+            Achievement Year:<br>
+            <input id = "achievement_year" type="text" name= "achievement_year"><br>
+            Achievement Name:<br>
+            <input id = "achievement_name" type="text" name="achievement_name"><br>
+
+            <input type="submit" value="Add">
+        </form>
+

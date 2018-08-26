@@ -1,0 +1,62 @@
+{{#if error_message}}
+    <p>Something went wrong!</p>
+{{else}}
+    {{#if peopleAchievement}}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Competition Name</th>
+                    <th>Year Won</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each peopleAchievement}}
+                    <tr>
+                        <td>{{people_fname}}</td>
+                        <td>{{people_lname}}</td>
+                        <td>{{achievement_name}}</td>
+                        <td>{{achievement_year}}</td>
+                        <td><a href="/delete/peopleachievement/{{people_id}}/{{achievement_id}}">Delete</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+{{/if}}
+
+<h2>Enter New Relation</h2>
+<form action="/add/peopleachievement/" method="POST">
+	<div class="form-group">
+		<label for="people">Person</label>
+		<select class="form-control" id="people" name="people">
+			{{#each people}}
+				<option value="{{people_id}}">{{people_fname}} {{people_lname}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="achievement">Achievement</label>
+		<select class="form-control" id="achievement" name="achievement">
+			{{#each achievement}}
+				<option value="{{achievement_id}}">{{achievement_year}} {{achievement_name}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<button type="submit" class="btn btn-default">Add Relation</button>
+</form>

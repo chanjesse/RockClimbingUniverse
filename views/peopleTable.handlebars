@@ -1,0 +1,62 @@
+{{#if error_message}}
+    <p>Something went wrong!</p>
+{{else}}
+    {{#if peoples}}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Height(CM)</th>
+                    <th>Weight(KG)</th>
+                    <th>Age</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each peoples}}
+                    <tr>
+                        <td>{{people_fname}}</td>
+                        <td>{{people_lname}}</td>
+                        <td>{{people_height}}</td>
+                        <td>{{people_weight}}</td>
+                        <td>{{people_age}}</td>
+                        <td><a href="/delete/people/{{people_id}}">Delete</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+{{/if}}
+
+    <h2>Add New Person</h2>
+        <form action='/add/people' method = "POST">
+            First name:<br>
+            <input id = "people_fname" type="text" name= "people_fname"><br>
+            Last name:<br>
+            <input id = "people_lname" type="text" name="people_lname"><br>
+            Height(CM):<br>
+            <input id = "people_height" type="number" name="people_height"><br>
+            Weight(KG):<br>
+            <input id = "people_weight" type="number" name="people_weight"><br>
+            Age:<br>
+            <input id = "people_age" type="number" name="people_age"><br>
+
+            <input type="submit" value="Add">
+        </form>
+
+
+

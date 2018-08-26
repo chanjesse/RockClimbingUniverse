@@ -1,0 +1,49 @@
+{{#if error_message}}
+    <p>Something went wrong!</p>
+{{else}}
+    {{#if shoes}}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+            }
+            th {
+                text-align: left;
+            }
+        </style>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each shoes}}
+                    <tr>
+                        <td>{{shoes_year}}</td>
+                        <td>{{shoes_brand}}</td>
+                        <td>{{shoes_model}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    {{/if}}
+{{/if}}
+
+    <h2>Add New Shoes</h2>
+        <form action='/add/shoes' method = "POST">
+            Shoe Brand:<br>
+            <input id = "shoe_brand" type="text" name= "shoe_brand"><br>
+            Shoe Model:<br>
+            <input id = "shoe_model" type="text" name="shoe_model"><br>
+            Shoe Year:<br>
+            <input id = "shoe_year" type="number" name="shoe_year"><br>
+
+            <input type="submit" value="Add">
+        </form>
